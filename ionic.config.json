@@ -1,0 +1,7 @@
+{
+  "name": "responsi_ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
