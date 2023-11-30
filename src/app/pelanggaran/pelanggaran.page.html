@@ -1,0 +1,59 @@
+<!-- pelanggaran.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Pelanggaran
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button (click)="openModalTambah(true)">Tambah Pelanggaran</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let pelanggaran of pelanggaranList">
+      <ion-label>{{ pelanggaran.nama_pelanggar }}</ion-label>
+      <ion-button (click)="openModalEdit(true, pelanggaran)">Edit</ion-button>
+      <ion-button (click)="hapusPelanggaran(pelanggaran.id)">Hapus</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-modal [showBackdrop]="true" [keyboardClose]="true" [presentingElement]="modalTambah">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Tambah Pelanggaran</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cancel()">Tutup</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-item>
+      <ion-label position="floating">Nama Pelanggar</ion-label>
+      <ion-input [(ngModel)]="newPelanggar.nama_pelanggar" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tanggal</ion-label>
+      <ion-input [(ngModel)]="newPelanggar.tanggal" type="date" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Jenis Pelanggaran</ion-label>
+      <ion-input [(ngModel)]="newPelanggar.jenis_pelanggaran" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Keterangan</ion-label>
+      <ion-input [(ngModel)]="newPelanggar.keterangan" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="tambahPelanggaran()">Simpan</ion-button>
+  </ion-content>
+</ion-modal>
+
+<ion-modal [showBackdrop]="true" [keyboardClose]="true" [presentingElement]="modalEdit">
+  <!-- Konten modal edit -->
+</ion-modal>
